@@ -16,6 +16,15 @@ public class Empresa {
         this.telefonoEmpresa = telefonoEmpresa;
         this.NitEmpresa = NitEmpresa;
     }
+    
+        public void EditarEmpresa(String nombreEmpresa, String direccionEmpresa, String telefonoEmpresa, String NitEmpresa){
+        this.nombreEmpresa = nombreEmpresa;
+        this.direccionEmpresa = direccionEmpresa;
+        this.telefonoEmpresa = telefonoEmpresa;
+        this.NitEmpresa = NitEmpresa;
+    }
+    
+    
     //GETTERS AND SETTERS
     public String getNombreEmpresa() {
 
