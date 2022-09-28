@@ -1,4 +1,4 @@
-package com.example.Developer.project.Services;
+package com.example.Developer.project.Services.TransactionService;
 
 import com.example.Developer.project.Entities.Employee;
 import com.example.Developer.project.Entities.Enterprise;
@@ -7,7 +7,7 @@ import com.example.Developer.project.Entities.Transaction;
 
 import java.util.ArrayList;
 
-public class TransactionService {
+public class TransactionServiceList {
     private ArrayList<Transaction> transactions =new ArrayList<>();
 
     private Enterprise enterpriseOne = new Enterprise("Mintic", "Calle 68", "34655323", "0095400");
@@ -15,10 +15,10 @@ public class TransactionService {
     private RoleName operator = RoleName.OPERARIO;
     private Employee employeeOne = new Employee("Jonathan", "Jonathan@gmail.com", enterpriseOne, administrator);
     private Employee employeeTwo = new Employee("Sebastian", "sebas@gmail.com", enterpriseOne, operator);
-    private Transaction transactionOne = new Transaction(1200000, "Pago administracion", employeeOne);
-    private Transaction transactionTwo = new Transaction(-120000, "Pago salud", employeeTwo);
+    private Transaction transactionOne = new Transaction("Pago administracion",1200, employeeOne);
+    private Transaction transactionTwo = new Transaction("Pago salud",-12000, employeeTwo);
 
-    public TransactionService(){
+    public TransactionServiceList(){
         transactions.add(transactionOne);
         transactions.add(transactionTwo);
     }
@@ -52,7 +52,7 @@ public class TransactionService {
 
             transaction_bd.setCantidad(transaction_update.getCantidad());
             transaction_bd.setConcepto(transaction_update.getConcepto());
-            transaction_bd.setUser(transaction_update.getUser());
+            transaction_bd.setEmployee(transaction_update.getEmployee());
 
             return transaction_bd;
         } catch (Exception e) {
@@ -70,8 +70,8 @@ public class TransactionService {
             if(transaction_update.getConcepto() != null && !transaction_update.getConcepto().equals("")){
                 transaction_bd.setCantidad(transaction_update.getCantidad());
             }
-            if(transaction_update.getUser() != null && !transaction_update.getUser().equals("")){
-                transaction_bd.setUser(transaction_update.getUser());
+            if(transaction_update.getEmployee() != null && !transaction_update.getEmployee().equals("")){
+                transaction_bd.setEmployee(transaction_update.getEmployee());
             }
 
             return transaction_bd;
@@ -158,3 +158,5 @@ public class TransactionService {
         this.transactionTwo = transactionTwo;
     }
 }
+
+

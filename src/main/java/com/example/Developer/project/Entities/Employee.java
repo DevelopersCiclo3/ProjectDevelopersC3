@@ -1,16 +1,42 @@
 package com.example.Developer.project.Entities;
 
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name="employee")
 public class Employee {
+    @Id
     private String nombre;
+    @Column
     private String correo;
-    private Enterprise empresa;
+    @ManyToOne
+    private Enterprise enterprise;
+    @OneToMany(mappedBy = "employee")
+    private List<Transaction> transactions;
+
     private RoleName rol;
 
-    public Employee(String nombre, String correo, Enterprise empresa, RoleName rol) {
+    public Employee(String nombre, String correo, Enterprise enterprise, List<Transaction> transactions, RoleName rol) {
         this.nombre = nombre;
         this.correo = correo;
-        this.empresa = empresa;
+        this.enterprise = enterprise;
+        this.transactions = transactions;
         this.rol = rol;
+    }
+
+    public Employee(String nombre, String correo, Enterprise enterprise, RoleName rol) {
+        this.nombre = nombre;
+        this.correo = correo;
+        this.enterprise = enterprise;
+        this.rol = rol;
+    }
+
+    public Employee(String nombre, String correo, Enterprise enterprise) {
+        this.nombre = nombre;
+        this.correo = correo;
+        this.enterprise = enterprise;
     }
 
     public String getNombre() {
@@ -29,12 +55,12 @@ public class Employee {
         this.correo = correo;
     }
 
-    public Enterprise getEmpresa() {
-        return empresa;
+    public Enterprise getEnterprise() {
+        return enterprise;
     }
 
-    public void setEmpresa(Enterprise empresa) {
-        this.empresa = empresa;
+    public void setEnterprise(Enterprise enterprise) {
+        this.enterprise = enterprise;
     }
 
     public RoleName getRol() {

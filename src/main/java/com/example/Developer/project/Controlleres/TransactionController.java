@@ -1,22 +1,22 @@
 package com.example.Developer.project.Controlleres;
 
-import com.example.Developer.project.Entities.Employee;
-import com.example.Developer.project.Entities.Enterprise;
 import com.example.Developer.project.Entities.Transaction;
 import com.example.Developer.project.Entities.objectResponse;
-import com.example.Developer.project.Services.TransactionService;
+import com.example.Developer.project.Services.TransactionService.ServiceTransactionInterface;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class TransactionController {
-
-    private TransactionService transactionService = new TransactionService();
+    @Autowired
+    private ServiceTransactionInterface transactionService;
     @GetMapping("/transactions")
-    public ResponseEntity<ArrayList<Transaction>> getTransactions(){
+    public ResponseEntity<List<Transaction>> getTransactions(){
         return new ResponseEntity<>(transactionService.getTransactions(), HttpStatus.OK);
     }
 

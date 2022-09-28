@@ -1,20 +1,28 @@
 package com.example.Developer.project.Controlleres;
 
 
+
 import com.example.Developer.project.Entities.Employee;
-import com.example.Developer.project.Entities.Enterprise;
 import com.example.Developer.project.Entities.objectResponse;
-import com.example.Developer.project.Services.EmployeeServices;
+import com.example.Developer.project.Services.EmployeeService.ServiceEmployeeInterface;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.ArrayList;
+
+import java.util.List;
 
 @RestController
 public class EmployeeController {
-    private EmployeeServices employeeServices = new EmployeeServices();
+
+    @Autowired
+    private ServiceEmployeeInterface employeeServices;
+
+    //private EmployeeServicesList employeeServices = new EmployeeServicesList();
+
+
     @GetMapping("/employees")
-    public ResponseEntity<ArrayList<Employee>> getEmployees(){
+    public ResponseEntity<List<Employee>> getEmployees(){
         return new ResponseEntity<>(employeeServices.getEmployees(), HttpStatus.OK);
     }
     @GetMapping("/employee")
@@ -61,7 +69,7 @@ public class EmployeeController {
 
         try {
             Employee employee_bd = employeeServices.updateEmployee(employee_update, id);
-            return new ResponseEntity<>(new objectResponse("Actualizacion Exitosa",employee_bd),HttpStatus.OK);
+            return new ResponseEntity<>(new objectResponse("ActualizaciÃ³n Exitosa",employee_bd),HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(new objectResponse(e.getMessage(),null),HttpStatus.INTERNAL_SERVER_ERROR);

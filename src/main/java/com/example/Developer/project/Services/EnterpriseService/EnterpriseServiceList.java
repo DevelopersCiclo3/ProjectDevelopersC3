@@ -1,13 +1,15 @@
-package com.example.Developer.project.Services;
+package com.example.Developer.project.Services.EnterpriseService;
+
+
 
 import com.example.Developer.project.Entities.Enterprise;
 import java.util.ArrayList;
 
-public class EnterpriseService {
+public class EnterpriseServiceList {
     private ArrayList<Enterprise> enterprises = new ArrayList<>();
     private Enterprise enterpriseOne = new Enterprise("Mintic", "Calle 68", "34655323", "0095400");
     private Enterprise enterpriseTwo = new Enterprise("Telecomunicaciones", "Calle 68", "311783453", "1-0095400");
-    public EnterpriseService (){
+    public EnterpriseServiceList(){
         enterprises.add(enterpriseOne);
         enterprises.add(enterpriseTwo);
     }

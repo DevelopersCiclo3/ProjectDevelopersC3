@@ -1,23 +1,23 @@
 package com.example.Developer.project.Controlleres;
 
-
 import com.example.Developer.project.Entities.Enterprise;
 import com.example.Developer.project.Entities.objectResponse;
-import com.example.Developer.project.Services.EnterpriseService;
+import com.example.Developer.project.Services.EnterpriseService.ServicesEnterpriseInterface;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
-import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class EnterpriseController {
-
-    private EnterpriseService enterpriseService = new EnterpriseService();
+    @Autowired
+    private ServicesEnterpriseInterface enterpriseService;
 
     @GetMapping("/enterprises")
-    public ResponseEntity<ArrayList<Enterprise>> getEnterprises() {
+    public ResponseEntity<List<Enterprise>> getEnterprises() {
         return new ResponseEntity<>(enterpriseService.getEnterprises(), HttpStatus.OK);
     }
 
@@ -65,7 +65,7 @@ public class EnterpriseController {
 
         try {
             Enterprise enterprise_bd = enterpriseService.updateEnterprise(enterprise_update, id);
-            return new ResponseEntity<>(new objectResponse("Actualizacion Exitosa",enterprise_bd),HttpStatus.OK);
+            return new ResponseEntity<>(new objectResponse("ActualizaciÃ³n Exitosa",enterprise_bd),HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(new objectResponse(e.getMessage(),null),HttpStatus.INTERNAL_SERVER_ERROR);

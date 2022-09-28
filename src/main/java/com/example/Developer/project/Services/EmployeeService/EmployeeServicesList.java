@@ -1,13 +1,13 @@
-package com.example.Developer.project.Services;
+package com.example.Developer.project.Services.EmployeeService;
 
 
 import com.example.Developer.project.Entities.Employee;
 import com.example.Developer.project.Entities.Enterprise;
 import com.example.Developer.project.Entities.RoleName;
 
-        import java.util.ArrayList;
+import java.util.ArrayList;
 
-public class EmployeeServices {
+public class EmployeeServicesList {
     private ArrayList<Employee> employees = new ArrayList<>();
     private Enterprise enterprise = new Enterprise("Oriente", "Bogota", "23443", "1-1234");
 
@@ -16,7 +16,7 @@ public class EmployeeServices {
     private Employee employeeOne = new Employee("Orlando", "orlandobarragan@outlook.com", enterprise, administrator);
     private Employee employeeTwo = new Employee("Carlos", "carlosJonathan@outlook.com", enterprise, operator);
 
-    public EmployeeServices(){
+    public EmployeeServicesList(){
         employees.add(employeeOne);
         employees.add(employeeTwo);
     }
@@ -51,8 +51,8 @@ public class EmployeeServices {
             if(employee_update.getCorreo() != null && !employee_update.getCorreo().equals("")){
                 employee_bd.setCorreo(employee_update.getCorreo());
             }
-            if(employee_update.getEmpresa() != null && !employee_update.getEmpresa().equals("")){
-                employee_bd.setEmpresa(employee_update.getEmpresa());
+            if(employee_update.getEnterprise() != null && !employee_update.getEnterprise().equals("")){
+                employee_bd.setEnterprise(employee_update.getEnterprise());
             }
             if(employee_update.getRol() != null && !employee_update.getRol().equals("")){
                 employee_bd.setRol(employee_update.getRol());
@@ -68,7 +68,7 @@ public class EmployeeServices {
 
             employee_bd.setNombre(employee_update.getNombre());
             employee_bd.setCorreo(employee_update.getCorreo());
-            employee_bd.setEmpresa(employee_update.getEmpresa());
+            employee_bd.setEnterprise(employee_update.getEnterprise());
             employee_bd.setRol(employee_update.getRol());
 
             return employee_bd;
@@ -112,3 +112,5 @@ public class EmployeeServices {
         this.employeeOne = employeeOne;
     }
 }
+
+
